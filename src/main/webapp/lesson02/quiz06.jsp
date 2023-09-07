@@ -15,7 +15,7 @@
 
 </head>
 <body>
-	<div class="container mt-3"  style="text-align:center">
+	<div class="container mt-3 text-center">
 		<h2>장보기 목록</h2>
 		<table class="table">
 			<thead>
@@ -36,15 +36,12 @@
 			    		num++;
 			    %>
 			    <tr>
-			    	<th><%= num %></th>
+			    	<td><%= num %></td>
 			    	<td><%= goods %></td>
 			    </tr>
 			    <%
 			    	}
-			    %>			
-			    	
-				
-				
+			    %>
 			</tbody>
 		</table>
 	</div>
