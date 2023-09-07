@@ -12,7 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container">
+	
 	<%
 	    List<Map<String, Object>> list = new ArrayList<>();
 	    Map<String, Object> map = new HashMap<String, Object>() {
@@ -58,21 +58,23 @@
 	        } 
 	    };
 	    list.add(map);
-		
+	    String id = request.getParameter("id");
 	    for (int i = 0; i < list.size(); i++) {
-	    	if (request.getParameter("id").equals(list.get(i).get("id"))) {
-	    	
+		    if (id.equals(list.get(i).get("id").toString())) {
+		    	
 	%>
-			<div class="diplay-4">
-				111
-			</div>
-	<%
-			}
-		
-			
-			
-		}
-	%>
+	<div class="container d-flex">
+		<img src=<%= list.get(i).get("image") %> width="150">
+		<div>
+			<h1 class="font-weight-bold m-0"><%= list.get(i).get("title") %></h1>
+			<h3 class="text-info m-0"><%= list.get(i).get("author") %></h3>
+			<span class="text-secondary"><%= list.get(i).get("publisher") %></span>
+		</div>
 	</div>
+	<%
+		    }
+	    	
+	    }
+	%>
 </body>
 </html>
