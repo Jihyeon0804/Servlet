@@ -16,10 +16,11 @@
 		<h2>책 목록</h2>
 		<table class="table">
 			<thead>
-				<tr>
-					<th>id</th>
-					<th>표지</th>
-					<th>제목</th>
+			<%-- row class를 설정하면 12칸 기준으로 칸 영역을 잡을 수 있다. --%>
+				<tr class="row">
+					<th class="col-1">id</th>
+					<th class="col-2">표지</th>
+					<th class="col-9">제목</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -73,12 +74,12 @@
 			    	
 			    
 				%>
-				<tr>
-					<td><%= list.get(i).get("id") %></td>
-					<td>
-						<img src=<%= list.get(i).get("image")%> width="50">
+				<tr class="row">
+					<td class="col-1"><%= list.get(i).get("id") %></td>
+					<td class="col-2">
+						<img src=<%= list.get(i).get("image")%> alt="표지" width="50">
 					</td>
-					<td>
+					<td class="col-9">
 						<a href="/lesson02/quiz08_1.jsp?id=<%= list.get(i).get("id")%>"><%= list.get(i).get("title")%></a>
 					</td>
 				</tr>

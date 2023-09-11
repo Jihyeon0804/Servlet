@@ -58,17 +58,30 @@
 	        } 
 	    };
 	    list.add(map);
+	    
+	    // 테이블에 보여줄 책 정보(target) 뽑아내기
+	    /* int id = Integer.valueOf(request.getParameter("id"));
+	    
+	    Map<String, Object> target = new HashMap<>();
+	    for (Map<String, Object> item : list) {
+	    	if (id == (int)item.get("id")) {
+	    		target = item;
+	    		break;
+	    	}
+	    } */
 	    String id = request.getParameter("id");
 	    for (int i = 0; i < list.size(); i++) {
 		    if (id.equals(list.get(i).get("id").toString())) {
 		    	
 	%>
 	<div class="container d-flex">
-		<img src=<%= list.get(i).get("image") %> width="150">
 		<div>
-			<h1 class="font-weight-bold m-0"><%= list.get(i).get("title") %></h1>
-			<h3 class="text-info m-0"><%= list.get(i).get("author") %></h3>
-			<span class="text-secondary"><%= list.get(i).get("publisher") %></span>
+			<img src=<%= list.get(i).get("image") %> alt="표지 이미지" width="300">		
+		</div>
+		<div>
+			<div class="display-1 font-weight-bold"><%= list.get(i).get("title") %></div>
+			<div class="display-3 text-info"><%= list.get(i).get("author") %></div>
+			<div class="display-4 text-secondary"><%= list.get(i).get("publisher") %></div>
 		</div>
 	</div>
 	<%
