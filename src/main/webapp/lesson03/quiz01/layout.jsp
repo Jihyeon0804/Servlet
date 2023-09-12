@@ -12,10 +12,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 <style>
-#wrap {height:1200px;}
+
 header {height:80px;}
 nav {height:50px;}
-.contnets {min-height:500px;}
+.contents {min-height:500px;}
 footer {height:50px;}
 </style>
 </head>
@@ -59,15 +59,15 @@ footer {height:50px;}
     map = new HashMap<String, String>() {{ put("ch", "121"); put("name", "KBSN 스포츠"); put("category", "스포츠"); } };
     list.add(map);
 %>
-	<div id="wrap" class="bg-secondary">
+	<div id="wrap">
 		<div class="container">
-			<header class="bg-info d-flex justify-content-center align-items-center">
+			<header class="d-flex justify-content-center align-items-center">
 				<jsp:include page="header.jsp" />
 			</header>
 			<nav class="bg-danger d-flex align-items-center">
 				<jsp:include page="nav.jsp" />
 			</nav>
-			<section class="contnets bg-warning">
+			<section class="contents">
 				<table class="table text-center">
 					<thead>
 						<tr>
@@ -77,23 +77,13 @@ footer {height:50px;}
 						</tr>
 					</thead>
 					<tbody>
-<%
-for (int i = 0; i < list.size(); i++) {
-	
-%>
-						<tr>
-							<td><%= list.get(i).get("ch") %></td>
-							<td><%= list.get(i).get("name") %></td>
-							<td><%= list.get(i).get("category") %></td>
-						</tr>
-<%
-		
-	}
-%>
+
+						<jsp:include page="content1.jsp" />
+
 					</tbody>
 				</table>
 			</section>
-			<footer class="bg-success d-flex justify-content-center align-items-center">
+			<footer class="d-flex justify-content-center align-items-center">
 				<jsp:include page="footer.jsp" />
 			</footer>
 		</div>
