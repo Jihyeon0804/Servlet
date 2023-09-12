@@ -81,6 +81,7 @@
     musicList.add(musicInfo);
     
     String title = request.getParameter("title");
+    String keyword = request.getParameter("keyword");
     if (title == null) {
 %>
 	<h4 class="font-weight-bold">곡 목록</h4>

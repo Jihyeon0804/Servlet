@@ -43,23 +43,14 @@
 
 	String category = request.getParameter("category");
 	for (int i = 0; i < list.size(); i++) {
-		if (category == null || category.equals("전체")) {
+		// 카테고리가 null일 때(전체) 또는 카테고리와 일치할 때
+		if (category == null || category.equals(list.get(i).get("category"))) {
 %>
 			<tr>
 				<td><%=list.get(i).get("ch")%></td>
 				<td><%=list.get(i).get("name")%></td>
 				<td><%=list.get(i).get("category")%></td>
 			</tr>
-<%
-		} else if (category.equals(list.get(i).get("category"))) {
-%>
-
-			<tr>
-				<td><%= list.get(i).get("ch") %></td>
-				<td><%= list.get(i).get("name") %></td>
-				<td><%= list.get(i).get("category") %></td>
-			</tr>
-
 <%			
 		}
 	}
