@@ -22,13 +22,13 @@ footer {height:200px;}
 <body>
 	<div class="container">
 		<header class="d-flex">
-			<jsp:include page="header.jsp" />
+			<jsp:include page="header2.jsp" />
 		</header>
 		<nav class="bg-success d-flex align-items-center">
 			<jsp:include page="nav.jsp" />
 		</nav>
 		<section class="contents">
-			<jsp:include page="content1.jsp" />
+			<jsp:include page="content1-1.jsp" />
 		</section>
 		<footer class="d-flex align-items-center border-top border-secondary">
 			<jsp:include page="footer.jsp" />
