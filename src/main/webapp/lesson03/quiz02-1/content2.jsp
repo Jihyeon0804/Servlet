@@ -90,6 +90,7 @@
  		if (title.equals(musicList.get(i).get("title")) || musicList.get(i).get("title").toString().contains(title)) {
 
 %>
+
 		<img src="<%=musicList.get(i).get("thumbnail")%>" alt="썸네일" width="200">
 		<div class="ml-4">
 			<h1><%= musicList.get(i).get("title") %></h1>
@@ -101,9 +102,10 @@
 				</div>
 				<div class="ml-5">
 					<small class="d-block"><%= musicList.get(i).get("album") %></small>
-					<small class="d-block"><%= (int)musicList.get(i).get("time")/60 %> : <%= (int)musicList.get(i).get("time")%60 %></small>
-					<small class="d-block"><%= musicList.get(i).get("composer") %></small>
-					<small class="d-block"><%= musicList.get(i).get("lyricist") %></small>
+					<small class="d-block"><%= (int)musicList.get(i).get("time")/60 %>
+						: <%= (int)musicList.get(i).get("time")%60 %></small> <small
+						class="d-block"><%= musicList.get(i).get("composer") %></small> <small
+						class="d-block"><%= musicList.get(i).get("lyricist") %></small>
 				</div>
 			</div>
 		</div>
