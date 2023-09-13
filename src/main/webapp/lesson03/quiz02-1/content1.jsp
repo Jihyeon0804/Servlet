@@ -114,8 +114,7 @@
 %>
 			<tr>
 				<td><%=musicList.get(i).get("id")%></td>
-				<td><a
-					href="layout2.jsp?title=<%=musicList.get(i).get("title")%>"><%=musicList.get(i).get("title")%></a></td>
+				<td><a href="layout2.jsp?title=<%=musicList.get(i).get("title")%>"><%=musicList.get(i).get("title")%></a></td>
 				<td><%=musicList.get(i).get("album")%></td>
 			</tr>
 			<%
