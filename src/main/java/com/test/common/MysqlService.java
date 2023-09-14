@@ -10,7 +10,7 @@ public class MysqlService {
 	// 필드 - DB 접속 정보 등
 	private static MysqlService mysqlService = null;
 	
-	private String url = "jdbc:mysql://localhost:3306/test_230619"; // 도메인 뒤쪽에 접속할 데이터베이스 명까지 넣는다.
+	private String url = "jdbc:mysql://localhost:3306/test_20230619"; // 도메인 뒤쪽에 접속할 데이터베이스 명까지 넣는다.
 	private String id = "root";
 	private String password = "root";
 	
@@ -24,7 +24,7 @@ public class MysqlService {
 	// new로 객체 생성X ; new로 하지 않으려면 static이 붙어 있어야함. 그래야 메모리에 할당되기 때문; static이면 new하지 않고 바로 객체 내의 메소드 사용 가능
 	// static 이므로 this.mysqlService로 쓰지 않음
 	public static MysqlService getInstance() {
-		if(mysqlService == null) {
+		if (mysqlService == null) {
 			mysqlService = new MysqlService();
 		}
 		return mysqlService;
@@ -64,7 +64,7 @@ public class MysqlService {
 
 	// 쿼리문 수행 - Read(Select) 이외의 것. 즉, Create, Update, Delete(insert, update, delete) ; 결과값을 받아오지 않음(void)
 	public void update(String query) throws SQLException {
-		statement.executeQuery(query);
+		statement.executeUpdate(query);
 	}
 	
 }
