@@ -30,18 +30,14 @@ footer {height:100px;}
 	String selectQuery = "select * from `seller`";
 	ResultSet res = ms.select(selectQuery);
 %>
-	<div id="wrap" class="bg-secondary container">
+	<div id="wrap" class="container">
 		<header class="d-flex align-items-center justify-content-center">
-			<h1 class="font-weight-bold"><a href="/lesson04/quiz03/marketHome.jsp" class="text-white">HONG당무 마켓</a></h1>
+			<jsp:include page="header.jsp" />
 		</header>
 		<nav>
-			<ul class="nav nav-fill font-weight-bold">
-				<li class="nav-item"><a href="#" class="nav-link text-white">리스트</a></li>
-				<li class="nav-item"><a href="/lesson04/quiz03/postGoods.jsp" class="nav-link text-white">물건 올리기</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-white">마이 페이지</a></li>
-			</ul>
+			<jsp:include page="nav.jsp" />
 		</nav>
-		<section class="contents bg-success">
+		<section class="contents">
 			<div class="p-5">
 				<div>
 					<h1>물건 올리기</h1>
@@ -83,8 +79,8 @@ footer {height:100px;}
 				</form>
 			</div>
 		</section>
-		<footer class="bg-info d-flex align-items-center justify-content-center text-secondary">
-			<div>Copyright © Hong 2023</div>
+		<footer class="d-flex align-items-center justify-content-center text-secondary">
+			<jsp:include page="footer.jsp" />
 		</footer>
 	</div>
 </body>

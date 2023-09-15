@@ -17,8 +17,9 @@ header {height:100px; background-color:#FF7F50;}
 a:hover {text-decoration:none;}
 nav {height:70px; background-color:#FF7F50; font-size:25px;}
 .contents {min-height:500px;}
-.no-img {background-color:#FFF;}
-.goods {border-style:solid; border-color:#FF7F50;}
+.no-img {background-color:#FFF; height:200px; width:300px;}
+.goods-div {gap: 20px 2%;}
+.goods {border-style:solid; border-color:#FF7F50; width:32%}
 .goods:hover {background-color:#FFDAB9;}
 .user-name {color:#FF7F50;}
 footer {height:100px;}
@@ -34,45 +35,43 @@ footer {height:100px;}
 	String selectQuery = "select * from `seller` A join `used_goods` B on A.id=B.sellerId";
 	ResultSet res = ms.select(selectQuery);
 %>
-	<div id="wrap" class="bg-secondary container">
+	<div id="wrap" class="container">
 		<header class="d-flex align-items-center justify-content-center">
-			<h1 class="font-weight-bold"><a href="/lesson04/quiz03/marketHome.jsp" class="text-white">HONG당무 마켓</a></h1>
+			<jsp:include page="header.jsp" />
 		</header>
 		<nav>
-			<ul class="nav nav-fill font-weight-bold">
-				<li class="nav-item"><a href="#" class="nav-link text-white">리스트</a></li>
-				<li class="nav-item"><a href="/lesson04/quiz03/postGoods.jsp" class="nav-link text-white">물건 올리기</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-white">마이 페이지</a></li>
-			</ul>
+			<jsp:include page="nav.jsp" />
 		</nav>
-		<section class="contents bg-success">
-			<div class="d-flex flex-wrap justify-content-between pt-3">
+		<section class="contents">
+			<div class="goods-div d-flex flex-wrap pt-3">
 <%
 				while (res.next()) {
 %>
 				<div class="goods p-2 mb-4">
+					<div class="container">
 <%
 					if (res.getString("pictureUrl") != null) {
 %>
-					<img src="<%= res.getString("pictureUrl") %>" alt="goods" width="300">
+						<img src="<%= res.getString("pictureUrl") %>" alt="goods" width="300" height="200">
 <%
 					} else {	
 %>
-					<div class="no-img d-flex align-items-center justify-content-center p-5"><h3 class="font-weight-bold text-secondary m-0">이미지 없음</h3></div>
+						<div class="no-img d-flex align-items-center justify-content-center p-5"><h3 class="font-weight-bold text-secondary m-0">이미지 없음</h3></div>
 <%
 					}
 %>
-					<div class="font-weight-bold"><%= res.getString("title") %></div>
-					<div class="text-secondary"><%= res.getInt("price") %></div>
-					<div class="user-name"><%= res.getString("nickname") %></div>
+						<div class="font-weight-bold mt-2"><%= res.getString("title") %></div>
+						<div class="text-secondary"><%= res.getInt("price") %></div>
+						<div class="user-name"><%= res.getString("nickname") %></div>
+					</div>
 				</div>
 <%
 				}
 %>
 			</div>
 		</section>
-		<footer class="bg-info d-flex align-items-center justify-content-center text-secondary">
-			<div>Copyright © Hong 2023</div>
+		<footer class="d-flex align-items-center justify-content-center text-secondary">
+			<jsp:include page="footer.jsp" />
 		</footer>
 	</div>
 </body>

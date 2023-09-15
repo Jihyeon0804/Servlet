@@ -10,7 +10,7 @@ public class MysqlService {
 	// 필드 - DB 접속 정보 등
 	private static MysqlService mysqlService = null;
 	
-	private String url = "jdbc:mysql://localhost:3306/test_20230619"; // 도메인 뒤쪽에 접속할 데이터베이스 명까지 넣는다.
+	private String url = "jdbc:mysql://localhost:3306/test_230619"; // 도메인 뒤쪽에 접속할 데이터베이스 명까지 넣는다.
 	private String id = "root";
 	private String password = "root";
 	

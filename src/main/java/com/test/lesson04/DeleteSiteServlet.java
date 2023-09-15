@@ -27,7 +27,7 @@ public class DeleteSiteServlet extends HttpServlet {
 		ms.connect();
 		
 		// DB delete
-		String deleteQuery = "delete from `site` where id = " + id;
+		String deleteQuery = "delete from `site` where `id` = " + id;
 		
 		try {
 			ms.update(deleteQuery);
@@ -38,7 +38,7 @@ public class DeleteSiteServlet extends HttpServlet {
 		// DB 연결 해제
 		ms.disconnect();
 		
-		// redirect -> siteList.jsp
+		// 302 redirect -> siteList.jsp
 		response.sendRedirect("/lesson04/quiz02/siteList.jsp");
 	}
 }

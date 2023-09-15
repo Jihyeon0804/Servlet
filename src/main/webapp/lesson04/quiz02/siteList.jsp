@@ -21,6 +21,8 @@
 	
 	// DB select
 	String selectQuery = "select * from `site` order by `id` desc";
+	
+	// select 수행 => 결과
 	ResultSet res = ms.select(selectQuery);
 %>
 	<div class="container">
@@ -38,8 +40,8 @@
 			%>
 				<tr>
 					<td><%= res.getString("name") %></td>
-					<td><a href="<%= res.getString("url") %>"><%= res.getString("url") %></a></td>
-					<td><a href="/lesson04/delete-site?id=<%= res.getString("id") %>">삭제하기</a></td>
+					<td><a href="<%= res.getString("url") %>" target="_blank"><%= res.getString("url") %></a></td>
+					<td><a href="/lesson04/delete-site?id=<%= res.getInt("id") %>" class="btn btn-danger">삭제하기</a></td>
 				</tr>
 				
 			<%		
