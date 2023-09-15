@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.test.common.MysqlService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,14 +14,26 @@
 <style>
 #wrap {height:1000px;}
 header {height:100px; background-color:#FF7F50;}
+a:hover {text-decoration:none;}
 nav {height:70px; background-color:#FF7F50; font-size:25px;}
 .contents {min-height:500px;}
+.no-img {background-color:#FFF;}
 .goods {border-style:solid; border-color:#FF7F50;}
+.goods:hover {background-color:#FFDAB9;}
 .user-name {color:#FF7F50;}
 footer {height:100px;}
 </style>
 </head>
 <body>
+<%
+	// DB 연결
+	MysqlService ms = MysqlService.getInstance();
+	ms.connect();
+	
+	// DB select
+	String selectQuery = "select * from `seller` A join `used_goods` B on A.id=B.sellerId";
+	ResultSet res = ms.select(selectQuery);
+%>
 	<div id="wrap" class="bg-secondary container">
 		<header class="d-flex align-items-center justify-content-center">
 			<h1 class="font-weight-bold"><a href="/lesson04/quiz03/marketHome.jsp" class="text-white">HONG당무 마켓</a></h1>
@@ -27,18 +41,34 @@ footer {height:100px;}
 		<nav>
 			<ul class="nav nav-fill font-weight-bold">
 				<li class="nav-item"><a href="#" class="nav-link text-white">리스트</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-white">물건 올리기</a></li>
+				<li class="nav-item"><a href="/lesson04/quiz03/postGoods.jsp" class="nav-link text-white">물건 올리기</a></li>
 				<li class="nav-item"><a href="#" class="nav-link text-white">마이 페이지</a></li>
 			</ul>
 		</nav>
 		<section class="contents bg-success">
 			<div class="d-flex flex-wrap justify-content-between pt-3">
+<%
+				while (res.next()) {
+%>
 				<div class="goods p-2 mb-4">
-					<img src="https://cdn.pixabay.com/photo/2023/09/03/18/01/lake-8231248_640.jpg" alt="goods" width="300">
-					<div class="font-weight-bold">title</div>
-					<div class="text-secondary">price</div>
-					<div class="user-name">user01</div>
+<%
+					if (res.getString("pictureUrl") != null) {
+%>
+					<img src="<%= res.getString("pictureUrl") %>" alt="goods" width="300">
+<%
+					} else {	
+%>
+					<div class="no-img d-flex align-items-center justify-content-center p-5"><h3 class="font-weight-bold text-secondary m-0">이미지 없음</h3></div>
+<%
+					}
+%>
+					<div class="font-weight-bold"><%= res.getString("title") %></div>
+					<div class="text-secondary"><%= res.getInt("price") %></div>
+					<div class="user-name"><%= res.getString("nickname") %></div>
 				</div>
+<%
+				}
+%>
 			</div>
 		</section>
 		<footer class="bg-info d-flex align-items-center justify-content-center text-secondary">
